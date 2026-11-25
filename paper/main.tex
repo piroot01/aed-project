@@ -1,0 +1,70 @@
+\documentclass[lettersize,journal]{template/IEEEtran}
+
+% --- Encoding and fonts (works with pdfLaTeX as well as XeLaTeX/LuaLaTeX/Tectonic) ---
+\usepackage{iftex}
+\ifPDFTeX
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+\else
+    \usepackage{fontspec}
+    % Times (TeX Gyre Termes), as IEEEtran uses with pdfLaTeX
+    \setmainfont{texgyretermes}[
+        Extension      = .otf,
+        UprightFont    = *-regular,
+        BoldFont       = *-bold,
+        ItalicFont     = *-italic,
+        BoldItalicFont = *-bolditalic,
+    ]
+\fi
+% No babel: English is LaTeX's default language, and babel would replace IEEEtran's
+% caption names (Fig., TABLE) with its own (Figure, Table).
+
+% --- Math ---
+\usepackage{amsmath,amsfonts}
+\usepackage{mathrsfs}
+
+% --- Algorithms ---
+% algorithm.sty and algorithmic.sty have a Latin-1 byte in a comment (line 11), which
+% XeTeX (Tectonic) reports as invalid UTF-8; read just these two files as Latin-1.
+\ifXeTeX\XeTeXdefaultencoding "iso-8859-1"\fi
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\ifXeTeX\XeTeXdefaultencoding "utf-8"\fi
+
+% --- Figures and tables ---
+\usepackage{graphicx}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{stfloats}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{booktabs}
+
+% --- Misc ---
+\usepackage{textcomp}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+
+\begin{document}
+
+\title{Paper Title}
+
+\author{%
+    \setlength{\tabcolsep}{1.2em}%
+    \begin{tabular}{ccc}
+        Artem Efremov & Lenka Čelakovská & Tomáš Macháček \\
+        \texttt{TODO} & \texttt{TODO}    & \texttt{machat16@fel.cvut.cz}
+    \end{tabular}%
+}
+
+\maketitle
+
+\input{sections/01_intro.tex}
+
+\bibliographystyle{IEEEtran}
+\bibliography{bib/references}
+
+\end{document}
